@@ -46,7 +46,6 @@ class Directory extends React.Component {
     };
   }
 
-  // decided to spread the sections since it was getting long
   render() {
     return (
       <div className="directory-menu">
