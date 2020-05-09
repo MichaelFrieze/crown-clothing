@@ -94,6 +94,31 @@ we basically created a new prop that is now accessible in the class
 This is because below here we are mapping these props to the app class since it is HOC. 
 It's also important to note that when we call setCurrentUser in the App class above,
 we are not calling the import statement. We are accessing this.props setCurrentUser
+
+Also, in chrome dev tools/console, we can see 2 or 3 actions. In the first one you will see
+that current user is null. But, if you look at the payload you will see that huge 
+user auth object from firebase with loads of information. 
+
+So it goes:
+prev state
+action
+next state
+
+Once we get to next state we can see that currentUser: P
+Which is equal to that massive payload
+
+Now, look at the next action which is after we have gotten the snapshot
+prev state current user is still that same big firebase auth object
+Then it fires again because of async/await in our snapshot code. 
+
+In action you will see that the payload is the object we defined:
+createdAt
+displayName
+email
+id
+
+Now currentUser should be assigned that payload instead of the huge auth object. 
+We should see this in next state
 */
 
 export default connect(null, mapDispatchToProps)(App);
