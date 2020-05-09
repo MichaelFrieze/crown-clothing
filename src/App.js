@@ -73,7 +73,7 @@ then we mapped the props from this action
 dispatch(setCurrentUser(user)) is coming from the import statement
 and dispatch is just part of connect
 we are setting this dispatch to setCurrentUser which is not the same as the import statement
-we basically created a new prop that is not accessible in the class
+we basically created a new prop that is now accessible in the class
 
 This is because below here we are mapping these props to the app class since it is HOC. 
 It's also important to note that when we call setCurrentUser in the App class above,
