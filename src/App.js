@@ -31,9 +31,27 @@ class App extends React.Component {
             ...snapShot.data(),
           });
         });
+      } else {
+        setCurrentUser(null);
       }
 
-      setCurrentUser(userAuth);
+      // setCurrentUser(userAuth);
+      /* 
+      As you can cancel, I commented out this line because I think all this does is
+      make sure an update happens on each action change. If this doesn't get called in the selection statement
+      then you never see the sign in/out button change. So you have to call this whether or not
+      userAuth is true. 
+
+      However, it didn't make sense to use userAuth as a param in setCurrentUser. 
+      It just shows the massive google auth payload or null. 
+      So, we put it in the else statement and just passed null anyway if userAuth is false. 
+      If true, then setCurrentUser gets the nice snapshot data. 
+
+      I can't think of a good reason to keep it the other way. 
+      Maybe this can reduce performance? 
+      Since we are async/await I guess it could take longer for button change?
+      */
+
       /* 
       Here we are sending userAuth to the action.
       If it's not true, then userAuth is null and CurrentUser will be null
