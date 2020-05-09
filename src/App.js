@@ -62,20 +62,6 @@ class App extends React.Component {
   }
 }
 
-/* 
-we can always access "state" in our params. 
-Like this:
-
-const mapStateToProps = (state) => ({
-  currentUser: state.user.currentUser,
-});
-
-But here we are going to use destructoring
-to get the user reducer off of the root reducer (index)
-
-What we will return is the currentUser prop
-which is assigned user.currentUser
-*/
 const mapStateToProps = ({ user }) => ({
   currentUser: user.currentUser,
 });
