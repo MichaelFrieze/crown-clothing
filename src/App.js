@@ -21,6 +21,8 @@ class App extends React.Component {
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
+        console.log(userAuth);
+        console.log("This is testing userAuth IF TRUE");
         const userRef = await createUserProfileDocument(userAuth);
 
         userRef.onSnapshot((snapShot) => {
@@ -32,6 +34,20 @@ class App extends React.Component {
       }
 
       setCurrentUser(userAuth);
+      /* 
+      Here we are sending userAuth to the action.
+      If it's not true, then userAuth is null and CurrentUser will be null
+      If True, then userAuth will setCurrentUser with this login info
+
+      You might think that we don't even need to call setCurrentUser() if userAuth is not true
+      But then the page won't update because you didn't update the action with null user. 
+
+      Also, with these console.log, you might notice that even when true it might show a null value inside of actions
+      Then you will see it popup again and give it actual user data. 
+      This is because of async/await. It's sending null value into setCurrentUser at the bottom
+      because it runs no matter what to update the page. Then, eventually 
+      the async-await will add the user data and we will get a new update from actions with user info
+      */
     });
   }
 
