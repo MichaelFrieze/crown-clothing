@@ -13,7 +13,7 @@ const CartDropdown = ({ cartItems }) => (
       {cartItems.map((cartItem) => (
         <CartItem key={cartItem.id} item={cartItem} />
       ))}
-      {console.log(cartItems)}
+      {console.log(typeof cartItems, "contains", cartItems)}
     </div>
     <CustomButton>GO TO CHECKOUT</CustomButton>
   </div>
