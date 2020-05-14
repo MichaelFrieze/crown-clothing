@@ -17,8 +17,10 @@ const CartDropdown = ({ cartItems }) => (
   </div>
 );
 
-const mapStateToProps = ({ cart: { cartItems } }) => ({
-  cartItems,
-});
+// This is how I can check what is in the state
+const mapStateToProps = ({ cart: { cartItems } }) =>
+  console.log(cartItems) || {
+    cartItems,
+  };
 
 export default connect(mapStateToProps)(CartDropdown);
