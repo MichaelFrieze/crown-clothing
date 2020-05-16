@@ -1,4 +1,4 @@
-import * as types from "./types";
+import types from "./types";
 import * as utils from "./utils";
 
 const INITIAL_STATE = {
