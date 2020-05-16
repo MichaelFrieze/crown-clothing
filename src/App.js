@@ -8,6 +8,7 @@ import "./App.css";
 import Home from "./pages/home";
 import Shop from "./pages/shop";
 import Login from "./pages/login";
+import Checkout from "./pages/checkout";
 
 import Header from "./components/header/header";
 import { auth, createUserProfileDocument } from "./firebase/firebase";
@@ -47,6 +48,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/shop" component={Shop} />
+          <Route exact path="/checkout" component={Checkout} />
           <Route
             exact
             path="/login"
@@ -67,11 +69,5 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });
-
-/* 
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser,
-});
- */
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
