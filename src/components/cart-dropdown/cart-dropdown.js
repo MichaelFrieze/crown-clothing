@@ -36,25 +36,4 @@ const mapStateToProps = createStructuredSelector({
   cartItems: selectCartItems,
 });
 
-/* 
-The goal here is to toggle our cart hidden 
-after clicking "go to checkout"
-
-So we do that by the action "toggleCartHidden"
-
-Even though there is no map dispatch parameter, 
-connect still passes the dispatch to CartDropdown
-
-Just to see this, we can spread all props into CartDropdown:
-const CartDropdown = ({ cartItems, history, ...otherProps }) => ()
-
-Then we can console log to see we have access to dispatch
-console log by implementing a return statement or do this:
-const CartDropdown = ({ cartItems, history, ...otherProps }) =>
-  console.log(otherProps) || ()
-
-Get rid of the console and otherProps. All we need is dispatch
-
-
-*/
 export default withRouter(connect(mapStateToProps)(CartDropdown));
