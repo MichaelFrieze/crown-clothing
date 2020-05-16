@@ -4,7 +4,7 @@ import SHOP_DATA from "./data";
 
 import CollectionPreview from "../../components/collection-preview/collection-preview";
 
-class ShopPage extends React.Component {
+class Shop extends React.Component {
   constructor(props) {
     super(props);
 
@@ -25,4 +25,4 @@ class ShopPage extends React.Component {
   }
 }
 
-export default ShopPage;
+export default Shop;
