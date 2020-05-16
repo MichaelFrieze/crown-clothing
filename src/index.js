@@ -1,8 +1,8 @@
 import React from "react";
 
-import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
-import { Provider } from "react-redux";
+import { render } from "react-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import { Provider as ReduxProvider } from "react-redux";
 
 import App from "./App";
 import configureStore from "./redux/store";
@@ -11,11 +11,12 @@ import "./index.css";
 
 const reduxStore = configureStore(window.REDUX_INITIAL_DATA);
 
-ReactDOM.render(
-  <Provider store={reduxStore}>
-    <BrowserRouter>
+const RootHtml = () => (
+  <ReduxProvider store={reduxStore}>
+    <Router>
       <App />
-    </BrowserRouter>
-  </Provider>,
-  document.getElementById("root")
+    </Router>
+  </ReduxProvider>
 );
+
+render(<RootHtml />, document.getElementById("root"));
