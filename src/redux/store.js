@@ -1,15 +1,23 @@
 import { createStore, applyMiddleware, combineReducers } from "redux";
-import * as reducers from "./modules";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 import logger from "redux-logger";
+
+import * as reducers from "./modules";
 
 const middlewares = [logger];
 
-export default function configureStore(initialState) {
-  const rootReducer = combineReducers(reducers);
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["cart"],
+};
 
-  return createStore(
-    rootReducer,
-    initialState,
-    applyMiddleware(...middlewares)
-  );
-}
+const rootReducer = combineReducers(reducers);
+
+export const store = createStore(
+  persistReducer(persistConfig, rootReducer),
+  applyMiddleware(...middlewares)
+);
+
+export const persistor = persistStore(store);
