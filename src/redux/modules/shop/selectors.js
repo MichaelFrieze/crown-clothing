@@ -21,5 +21,3 @@ export const selectCollection = (collectionUrlParam) =>
       (collection) => collection.id === COLLECTION_ID_MAP[collectionUrlParam]
     )
   );
-
-// COLLECTION_ID_MAP[collectionUrlParam] is the same as COLLECTION_ID_MAP.collectionUrlParam

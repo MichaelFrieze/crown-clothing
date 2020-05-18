@@ -18,13 +18,6 @@ const mapStateToProps = (state, ownProps) => ({
   collection: selectCollection(ownProps.match.params.collectionId)(state),
 });
 
+// This is an example of currying so is the selector
+
 export default connect(mapStateToProps)(CollectionPage);
-
-/* 
-This is allowing us to dynamic change
-what object we are getting based on what route we are on
-
-selectCollection is a function that returns a function
-we pass the function that comes out of this function the STATE
-Which is why we can access { collections }
-*/
