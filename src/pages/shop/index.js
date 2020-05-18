@@ -12,5 +12,3 @@ const Shop = ({ match }) => (
 );
 
 export default Shop;
-
-// also notice we changed :categoryId to :collectionId
