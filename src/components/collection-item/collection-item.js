@@ -33,6 +33,3 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(null, mapDispatchToProps)(CollectionItem);
-
-// had to do type="button" because any buttons inside of a form element will
-// cause the form to treat button as type="submit"
