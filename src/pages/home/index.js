@@ -2,12 +2,12 @@ import React from "react";
 
 import Directory from "../../components/directory/directory";
 
-import "./index.scss";
+import { HomeContainer } from "./styles";
 
 const Home = () => (
-  <div className="homepage">
+  <HomeContainer>
     <Directory />
-  </div>
+  </HomeContainer>
 );
 
 export default Home;
