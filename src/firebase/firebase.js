@@ -39,6 +39,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   return userRef;
 };
 
+// this function can be used to manually add collections and documents to firebase
 export const addCollectionAndDocuments = async (
   collectionKey,
   objectsToAdd
