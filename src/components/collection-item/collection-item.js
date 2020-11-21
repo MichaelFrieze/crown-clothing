@@ -1,10 +1,10 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
-import CustomButton from "../custom-button/custom-button";
-import { addItem } from "../../redux/modules/cart/actions";
+import CustomButton from '../custom-button/custom-button';
+import { addItem } from '../../redux/modules/cart/actions';
 
-import "./collection-item.scss";
+import './collection-item.scss';
 
 const CollectionItem = ({ item, addItem }) => {
   const { name, price, imageUrl } = item;
@@ -28,8 +28,8 @@ const CollectionItem = ({ item, addItem }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  addItem: (item) => dispatch(addItem(item)),
+const mapDispatchToProps = dispatch => ({
+  addItem: item => dispatch(addItem(item)),
 });
 
 export default connect(null, mapDispatchToProps)(CollectionItem);

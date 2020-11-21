@@ -1,21 +1,21 @@
-import React from "react";
+import React from 'react';
 
-import FormInput from "../form-input/form-input";
-import CustomButton from "../custom-button/custom-button";
+import FormInput from '../form-input/form-input';
+import CustomButton from '../custom-button/custom-button';
 
-import { auth, createUserProfileDocument } from "../../firebase/firebase";
+import { auth, createUserProfileDocument } from '../../firebase/firebase';
 
-import "./sign-up.scss";
+import './sign-up.scss';
 
 class SignUp extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      displayName: "",
-      email: "",
-      password: "",
-      confirmPassword: ""
+      displayName: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
     };
   }
 
@@ -32,16 +32,16 @@ class SignUp extends React.Component {
     try {
       const { user } = await auth.createUserWithEmailAndPassword(
         email,
-        password
+        password,
       );
 
       await createUserProfileDocument(user, { displayName });
 
       this.setState({
-        displayName: "",
-        email: "",
-        password: "",
-        confirmPassword: ""
+        displayName: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
       });
     } catch (error) {
       console.error(error);

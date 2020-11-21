@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import Directory from "../../components/directory/directory";
+import Directory from '../../components/directory/directory';
 
-import { HomeContainer } from "./styles";
+import { HomeContainer } from './styles';
 
 const Home = () => (
   <HomeContainer>

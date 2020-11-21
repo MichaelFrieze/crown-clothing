@@ -1,20 +1,20 @@
-import types from "./types";
+import types from './types';
 
 export const toggleCartHidden = () => ({
   type: types.TOGGLE_CART_HIDDEN,
 });
 
-export const addItem = (item) => ({
+export const addItem = item => ({
   type: types.ADD_ITEM,
   payload: item,
 });
 
-export const removeItem = (item) => ({
+export const removeItem = item => ({
   type: types.REMOVE_ITEM,
   payload: item,
 });
 
-export const clearItemFromCart = (item) => ({
+export const clearItemFromCart = item => ({
   type: types.CLEAR_ITEM_FROM_CART,
   payload: item,
 });
