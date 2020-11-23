@@ -22,3 +22,8 @@ export const selectIsCollectionFetching = createSelector(
   [selectShop],
   shop => shop.isFetching,
 );
+
+export const selectIsCollectionsLoaded = createSelector(
+  [selectShop],
+  shop => !!shop.collections, // !! is double bang which is true for any object or false for empty string, 0, null, etc...
+);
