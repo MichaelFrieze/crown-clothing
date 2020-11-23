@@ -50,7 +50,7 @@ class ShopPage extends React.Component {
     we see below (below this comment section), we return promisses (right below). 
 
     like this:
-        collectionRef.get().then(snapshot => {
+    collectionRef.get().then(snapshot => {
       const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
       updateCollections(collectionsMap);
       this.setState({ loading: false });
@@ -84,14 +84,72 @@ class ShopPage extends React.Component {
     leveraging the promise chain style of doing async event handling. 
 
     The OTHER OPTION is to use the fetch pattern. But for now I am saving this and pushing.
+
+
+    This is the old observer/observable pattern using onSnapshot:
+    this.unsubscribeFromSnapshot = collectionRef.onSnapshot(snapshot => {
+      const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
+      updateCollections(collectionsMap);
+      this.setState({ loading: false });
+    });
+
+    To clarify, this is the promise way of doing it:
+    collectionRef.get().then(snapshot => {
+      const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
+      updateCollections(collectionsMap);
+      this.setState({ loading: false });
+    });
     
     */
-    // This is the old observer/observable pattern using onSnapshot:
-    // this.unsubscribeFromSnapshot = collectionRef.onSnapshot(snapshot => {
-    //   const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
-    //   updateCollections(collectionsMap);
-    //   this.setState({ loading: false });
-    // });
+
+    // ========================================================================
+    // ========================================================================
+
+    /* 
+    Moving on from that, let's talk about doing it the fetch pattern. 
+    The fetch pattern is probably more common if we are using any other 
+    type of database
+
+    firebase actually allows us to use their database as API's
+    which are accessible by URL. Check out firebase docs about
+    Making Rest calls. 
+    https://firebase.google.com/docs/firestore/use-rest-api#making_rest_calls
+
+    First I need to find my project ID by going to my firebase dashboard
+    then going to project settings. 
+    crwn-db-a5823
+
+    https://firestore.googleapis.com/v1/projects/YOUR_PROJECT_ID/databases/(default)/documents/cities/LA
+
+    So, my URL is this:
+    https://firestore.googleapis.com/v1/projects/crwn-db-a5823/databases/(default)/documents/cities/LA
+
+    Need to get rid of the cities/LA too:
+    https://firestore.googleapis.com/v1/projects/crwn-db-a5823/databases/(default)/documents/
+
+    Now let's implement this using the native fetch api. 
+    fetch(
+      'https://firestore.googleapis.com/v1/projects/crwn-db-a5823/databases/(default)/documents/collections',
+    )
+      .then(response => response.json())
+      .then(collections => console.log(collections));
+
+    Notice we are not dealing with snapshot so it's a good idea to console.log() this to see what is going on. 
+
+    We will see that we get an object that gives us a documents array. 
+    Inside this array, we have objects that represent the collection documents
+    that we have inside. However, the fields are actually on a fields property. 
+    And the fields have an actual name of the field by not the value. 
+
+    The value is actually in another property called arrayValue. 
+    Then, on the arrayValue, we see that it's buried deep.
+    It's extremely nested like 8 levels just to get the values. 
+    So, let's not use them. 
+
+    But, if we did want to use this then it would look similar to the promise way. 
+    We would still want to convert the collections to a map. Then fire update collections. 
+    Then set the state. 
+    */
   }
 
   render() {
