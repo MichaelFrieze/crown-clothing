@@ -2,10 +2,11 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 
 import * as reducers from './modules';
 
-const middlewares = [];
+const middlewares = [thunk];
 
 if (process.env.NODE_ENV === 'development') {
   middlewares.push(logger);
