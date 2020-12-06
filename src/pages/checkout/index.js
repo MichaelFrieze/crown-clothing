@@ -1,16 +1,16 @@
-import React from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
+import React from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
-import CheckoutItem from "../../components/checkout-item/index";
-import StripeCheckoutButton from "../../components/stripe-button";
+import CheckoutItem from '../../components/checkout-item/index';
+import StripeCheckoutButton from '../../components/stripe-button';
 
 import {
   selectCartItems,
   selectCartTotal,
-} from "../../redux/modules/cart/selectors";
+} from '../../redux/modules/cart/selectors';
 
-import "./index.scss";
+import './index.scss';
 
 const Checkout = ({ cartItems, total }) => (
   <div className="checkout-page">
@@ -31,7 +31,7 @@ const Checkout = ({ cartItems, total }) => (
         <span>Remove</span>
       </div>
     </div>
-    {cartItems.map((cartItem) => (
+    {cartItems.map(cartItem => (
       <CheckoutItem key={cartItem.id} cartItem={cartItem} />
     ))}
 

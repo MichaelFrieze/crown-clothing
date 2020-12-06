@@ -1,12 +1,12 @@
-import React from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
+import React from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
-import { selectCollectionsForPreview } from "../../redux/modules/shop/selectors";
+import { selectCollectionsForPreview } from '../../redux/modules/shop/selectors';
 
-import CollectionPreview from "../collection-preview/collection-preview";
+import CollectionPreview from '../collection-preview/collection-preview';
 
-import "./index.scss";
+import './index.scss';
 
 const CollectionsOverview = ({ collections }) => (
   <div className="collections-overview">

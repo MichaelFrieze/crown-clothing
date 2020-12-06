@@ -1,6 +1,6 @@
-import * as types from "./types";
+import * as types from './types';
 
-export const setCurrentUser = (user) => ({
+export const setCurrentUser = user => ({
   type: types.SET_CURRENT_USER,
   payload: user,
 });
